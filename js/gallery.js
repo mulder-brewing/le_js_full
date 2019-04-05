@@ -8,9 +8,14 @@ function activateGallery() {
 
 
   thumbnails.forEach(function(thumbnail) {
+    //Preload large images.
+    let newImageSrc = thumbnail.dataset.largeVersion;
+    let largeVersion = new Image();
+    largeVersion.src = newImageSrc;
+
     thumbnail.addEventListener("click",function() {
       //set the image in the middle pane to the clicked image in the left pane.
-      mainImage.setAttribute("src", thumbnail.dataset.largeVersion);
+      mainImage.setAttribute("src", newImageSrc);
       mainImage.setAttribute("alt", thumbnail.alt);
 
       //set the clicked image in the left pane to have the highlighting around it signifying that it is the current image.
